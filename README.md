@@ -1,59 +1,34 @@
-# HabitTracker
+# Habitude - Habit & Goal Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+**Transform your daily routines into lasting success.**
 
-## Development server
+Habitude is a powerful and intuitive habit tracking app built with Angular that helps you build positive habits, break bad ones, and achieve your goals through consistent daily actions.
 
-To start a local development server, run:
+## ✨ Features
 
-```bash
-ng serve
-```
+- **Smart Habit Tracking** - Track daily, weekly, or custom frequency habits
+- **Goal Setting & Monitoring** - Set SMART goals and track progress over time
+- **Visual Progress Analytics** - Beautiful charts and streaks to visualize your journey
+- **Habit Categories** - Organize habits by health, productivity, learning, and more
+- **Streak Tracking** - Build momentum with visual streak counters
+- **Flexible Scheduling** - Skip days, set rest days, and customize your routine
+- **Progress Insights** - Detailed analytics and trends to understand your patterns
+- **Motivational Reminders** - Smart notifications to keep you on track
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 📱 Usage
 
-## Code scaffolding
+1. **Add Your First Habit**: Click the "+" button to create a new habit
+2. **Set Your Goal**: Define frequency (daily, weekly, custom) and target
+3. **Track Daily**: Mark habits as complete each day
+4. **Monitor Progress**: View your streaks, analytics, and overall progress
+5. **Stay Motivated**: Check your achievement badges and milestones
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🙏 Acknowledgments
 
-```bash
-ng generate component component-name
-```
+- Built with [Angular](https://angular.dev)
+- Icons by [Lucide](https://lucide.dev)
+- Charts powered by [Chart.js](https://www.chartjs.org)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Start building better habits today with Habitude!** 🌱
