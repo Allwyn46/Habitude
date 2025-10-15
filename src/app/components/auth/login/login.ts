@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { ZardButtonComponent } from 'n/button/button.component';
+import { ZardCardComponent } from 'n/card/card.component';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [ZardCardComponent, ZardButtonComponent],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrl: './login.css',
 })
-export class Login {
-
-}
+export class Login {}
