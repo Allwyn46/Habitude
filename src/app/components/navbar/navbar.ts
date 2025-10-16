@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, HostListener, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ZardAvatarComponent } from 'n/avatar/avatar.component';
 import { ZardDropdownModule } from 'n/dropdown/dropdown.module';
@@ -7,7 +8,7 @@ import { Habitservice } from 'src/app/services/habitservice';
 
 @Component({
   selector: 'app-navbar',
-  imports: [ZardAvatarComponent, ZardDropdownModule],
+  imports: [ZardAvatarComponent, ZardDropdownModule, CommonModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
@@ -32,32 +33,17 @@ export class Navbar {
     console.log('Profile clicked');
   }
 
-  onBilling() {
-    console.log('Billing clicked');
+  isOpen = false;
+
+  toggleDropdown(event: MouseEvent) {
+    event.stopPropagation(); // Prevent body click from immediately closing
+    this.isOpen = !this.isOpen;
   }
 
-  onSettings() {
-    console.log('Settings clicked');
-  }
-
-  onKeyboardShortcuts() {
-    console.log('Keyboard shortcuts clicked');
-  }
-
-  onTeam() {
-    console.log('Team clicked');
-  }
-
-  onNewTeam() {
-    console.log('New Team clicked');
-  }
-
-  onGitHub() {
-    console.log('GitHub clicked');
-  }
-
-  onSupport() {
-    console.log('Support clicked');
+  // Close dropdown when clicking outside
+  @HostListener('document:click')
+  closeDropdown() {
+    this.isOpen = false;
   }
 
   onLogout() {

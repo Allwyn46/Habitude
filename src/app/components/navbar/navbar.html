@@ -1,57 +1,37 @@
 <header
-  class="fixed top-0 left-0 w-full z-50 bg-cream/80 backdrop-blur-lg border-b border-white/20"
+  class="fixed mx-auto px-10 top-0 left-0 w-full z-50 bg-cream/80 backdrop-blur-lg border-b border-white/20"
 >
-  <div class="mx-[1.5rem] w-full flex items-center justify-between py-4 px-6 md:px-10">
+  <div class="flex items-center justify-between py-4 px-6 md:px-10">
     <!-- Logo -->
     <a href="#" class="flex items-center space-x-2">
       <!--<img src="assets/logo.svg" alt="Luminous Labs Logo" class="h-6 md:h-8" />-->
       <span class="text-lg md:text-xl font-semibold text-charcoal">Habitude</span>
     </a>
 
-    <z-dropdown-menu-content #menu="zDropdownMenuContent" class="w-32">
-      <z-dropdown-menu-label>My Account</z-dropdown-menu-label>
-
-      <z-dropdown-menu-item (click)="onProfile()">
-        Profile
-        <z-dropdown-menu-shortcut>⇧⌘P</z-dropdown-menu-shortcut>
-      </z-dropdown-menu-item>
-
-      <z-dropdown-menu-item (click)="onBilling()">
-        Billing
-        <z-dropdown-menu-shortcut>⌘B</z-dropdown-menu-shortcut>
-      </z-dropdown-menu-item>
-
-      <z-dropdown-menu-item (click)="onSettings()">
-        Settings
-        <z-dropdown-menu-shortcut>⌘S</z-dropdown-menu-shortcut>
-      </z-dropdown-menu-item>
-
-      <z-dropdown-menu-item (click)="onKeyboardShortcuts()">
-        Keyboard shortcuts
-        <z-dropdown-menu-shortcut>⌘K</z-dropdown-menu-shortcut>
-      </z-dropdown-menu-item>
-
-      <z-dropdown-menu-item (click)="onTeam()">Team</z-dropdown-menu-item>
-
-      <z-dropdown-menu-item (click)="onNewTeam()">
-        New Team
-        <z-dropdown-menu-shortcut>⌘+T</z-dropdown-menu-shortcut>
-      </z-dropdown-menu-item>
-
-      <z-dropdown-menu-item (click)="onGitHub()">GitHub</z-dropdown-menu-item>
-      <z-dropdown-menu-item (click)="onSupport()">Support</z-dropdown-menu-item>
-      <z-dropdown-menu-item disabled="true">API</z-dropdown-menu-item>
 
 
-      <z-dropdown-menu-item (click)="onLogout()">
-        Log out
-        <z-dropdown-menu-shortcut>⇧⌘Q</z-dropdown-menu-shortcut>
-      </z-dropdown-menu-item>
-    </z-dropdown-menu-content>
 
-    <div class="mx-[9.5rem]">
-      <z-avatar [zImage]="zImageDefault" z-dropdown [zDropdownMenu]="menu"/>
-    </div>
+<div class="relative" (clickOutside)="isOpen = false">
+  <!-- Button -->
+  <button
+    class="bg-black text-white rounded-full w-10 h-10 cursor-pointer"
+    (click)="toggleDropdown($event)"
+  >
+    ZA
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    *ngIf="isOpen"
+    class="absolute left-[-40px] mt-2 w-32 rounded-sm bg-white shadow-lg"
+  >
+    <a class="block px-4 py-2 cursor-pointer text-sm rounded-sm hover:bg-gray-100">Profile</a>
+    <a (click)="onLogout()" class="block px-4 py-2 cursor-pointer text-sm rounded-sm hover:bg-gray-100">Log out</a>
+  </div>
+</div>
+
+
+
 
     <!-- Mobile Menu Button -->
     <button
