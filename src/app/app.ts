@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Landinglayout } from './landing/landinglayout/landinglayout';
+import { ZardToastComponent } from 'n/toast/toast.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Landinglayout],
+  imports: [RouterOutlet, ZardToastComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
