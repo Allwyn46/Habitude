@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ZardAvatarComponent } from 'n/avatar/avatar.component';
 import { ZardDropdownModule } from 'n/dropdown/dropdown.module';
 import { Authservice } from 'src/app/services/authservice';
@@ -8,7 +8,7 @@ import { Habitservice } from 'src/app/services/habitservice';
 
 @Component({
   selector: 'app-navbar',
-  imports: [ZardAvatarComponent, ZardDropdownModule, CommonModule],
+  imports: [ZardAvatarComponent, ZardDropdownModule, CommonModule, RouterLink],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
@@ -27,10 +27,6 @@ export class Navbar {
 
   closeMenu() {
     this.menuOpen = false;
-  }
-
-  onProfile() {
-    console.log('Profile clicked');
   }
 
   isOpen = false;
@@ -59,5 +55,9 @@ export class Navbar {
         console.log(error);
       },
     });
+  }
+
+  onProfile() {
+    this.router.navigateByUrl('profile');
   }
 }

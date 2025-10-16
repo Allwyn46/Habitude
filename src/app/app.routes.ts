@@ -5,6 +5,7 @@ import { Layout } from './components/layout/layout';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { authGuard } from './guards/auth-guard-guard';
 import { loginGuard } from './guards/login-guard-guard';
+import { Profile } from './components/profile/profile';
 
 export const routes: Routes = [
   {
@@ -15,7 +16,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: Login,
-    /* canActivate: [loginGuard], */
+    canActivate: [loginGuard],
   },
   {
     path: 'register',
@@ -29,6 +30,10 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: Dashboard,
+      },
+      {
+        path: 'profile',
+        component: Profile,
       },
     ],
   },
