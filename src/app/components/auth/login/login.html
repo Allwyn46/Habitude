@@ -4,41 +4,67 @@
     zTitle="Login to your account"
     zDescription="Enter your email below to login to your account"
   >
-    <div class="space-y-4">
-      <div class="space-y-2">
-        <label
-          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Email
-        </label>
-        <input
-          type="email"
-          placeholder="m@example.com"
-          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          required
-        />
-      </div>
-      <div class="space-y-2">
-        <div class="flex items-center">
+    <form [formGroup]="loginForm">
+      <div class="space-y-4">
+        <div class="space-y-2">
           <label
             class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
-            Password
+            Email
           </label>
-          <a href="#" class="ml-auto text-sm underline-offset-4 hover:underline">
-            Forgot your password?
-          </a>
+          <input
+            type="email"
+            formControlName="username"
+            placeholder="m@example.com"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            required
+          />
+          @if (loginForm.controls['username'].touched) {
+            @if (loginForm.controls['username'].errors?.['required']) {
+              <div>
+                <span class="text-[13px] text-red-500"> This Field is required </span>
+              </div>
+            }
+          }
         </div>
-        <input
-          type="password"
-          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          required
-        />
+        <div class="space-y-2">
+          <div class="flex items-center">
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Password
+            </label>
+          </div>
+          <input
+            type="password"
+            formControlName="password"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            required
+          />
+          @if (loginForm.controls['password'].touched) {
+            @if (loginForm.controls['password'].errors?.['required']) {
+              <div>
+                <span class="text-[13px] text-red-500"> This Field is required </span>
+              </div>
+            }
+          }
+        </div>
+        <div class="space-y-2">
+          <button
+            z-button
+            zType="default"
+            [disabled]="loginForm.invalid"
+            class="w-full"
+            (click)="onLogin()"
+          >
+            Login
+          </button>
+          <!-- <z-button zType="outline" class="w-full">Login with Google</z-button> -->
+        </div>
       </div>
-      <div class="space-y-2">
-        <z-button zType="default" class="w-full">Login</z-button>
-        <!-- <z-button zType="outline" class="w-full">Login with Google</z-button> -->
-      </div>
+    </form>
+    <div class="mt-3">
+      <span> Don't have an account? <a routerLink="/register" class="underline">Register</a> </span>
     </div>
   </z-card>
 </section>

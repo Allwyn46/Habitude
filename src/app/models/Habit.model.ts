@@ -6,3 +6,8 @@ export interface RegisterFormat {
   confirmPassword: FormControl<string>;
   ismfaactive: FormControl<boolean>;
 }
+
+export interface LoginFormat {
+  username: FormControl<string>;
+  password: FormControl<string>;
+}
