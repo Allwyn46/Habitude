@@ -1,1 +1,125 @@
-<p>navbar works!</p>
+<header
+  class="fixed top-0 left-0 w-full z-50 bg-cream/80 backdrop-blur-lg border-b border-white/20"
+>
+  <div class="mx-[1.5rem] w-full flex items-center justify-between py-4 px-6 md:px-10">
+    <!-- Logo -->
+    <a href="#" class="flex items-center space-x-2">
+      <!--<img src="assets/logo.svg" alt="Luminous Labs Logo" class="h-6 md:h-8" />-->
+      <span class="text-lg md:text-xl font-semibold text-charcoal">Habitude</span>
+    </a>
+
+    <z-dropdown-menu-content #menu="zDropdownMenuContent" class="w-32">
+      <z-dropdown-menu-label>My Account</z-dropdown-menu-label>
+
+      <z-dropdown-menu-item (click)="onProfile()">
+        Profile
+        <z-dropdown-menu-shortcut>⇧⌘P</z-dropdown-menu-shortcut>
+      </z-dropdown-menu-item>
+
+      <z-dropdown-menu-item (click)="onBilling()">
+        Billing
+        <z-dropdown-menu-shortcut>⌘B</z-dropdown-menu-shortcut>
+      </z-dropdown-menu-item>
+
+      <z-dropdown-menu-item (click)="onSettings()">
+        Settings
+        <z-dropdown-menu-shortcut>⌘S</z-dropdown-menu-shortcut>
+      </z-dropdown-menu-item>
+
+      <z-dropdown-menu-item (click)="onKeyboardShortcuts()">
+        Keyboard shortcuts
+        <z-dropdown-menu-shortcut>⌘K</z-dropdown-menu-shortcut>
+      </z-dropdown-menu-item>
+
+      <z-dropdown-menu-item (click)="onTeam()">Team</z-dropdown-menu-item>
+
+      <z-dropdown-menu-item (click)="onNewTeam()">
+        New Team
+        <z-dropdown-menu-shortcut>⌘+T</z-dropdown-menu-shortcut>
+      </z-dropdown-menu-item>
+
+      <z-dropdown-menu-item (click)="onGitHub()">GitHub</z-dropdown-menu-item>
+      <z-dropdown-menu-item (click)="onSupport()">Support</z-dropdown-menu-item>
+      <z-dropdown-menu-item disabled="true">API</z-dropdown-menu-item>
+
+
+      <z-dropdown-menu-item (click)="onLogout()">
+        Log out
+        <z-dropdown-menu-shortcut>⇧⌘Q</z-dropdown-menu-shortcut>
+      </z-dropdown-menu-item>
+    </z-dropdown-menu-content>
+
+    <div class="mx-[9.5rem]">
+      <z-avatar [zImage]="zImageDefault" z-dropdown [zDropdownMenu]="menu"/>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      (click)="toggleMenu()"
+      class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition"
+    >
+      <svg
+        *ngIf="!menuOpen"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+      <svg
+        *ngIf="menuOpen"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="menuOpen" class="md:hidden bg-cream border-t border-gray-200 px-6 py-4 space-y-4">
+    <a href="#home" class="block text-gray-700 hover:text-charcoal transition" (click)="closeMenu()"
+      >Home</a
+    >
+    <a
+      href="#product"
+      class="block text-gray-700 hover:text-charcoal transition"
+      (click)="closeMenu()"
+      >Product</a
+    >
+    <a
+      href="#benefits"
+      class="block text-gray-700 hover:text-charcoal transition"
+      (click)="closeMenu()"
+      >Benefits</a
+    >
+    <a href="#faq" class="block text-gray-700 hover:text-charcoal transition" (click)="closeMenu()"
+      >FAQ</a
+    >
+    <a href="#blog" class="block text-gray-700 hover:text-charcoal transition" (click)="closeMenu()"
+      >Blog</a
+    >
+    <a
+      href="#shop"
+      class="block bg-charcoal text-white text-center px-5 py-2 rounded-full hover:bg-accent transition"
+      (click)="closeMenu()"
+      >Shop Now</a
+    >
+  </div>
+</header>
+
