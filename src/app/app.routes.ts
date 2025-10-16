@@ -3,6 +3,8 @@ import { Login } from './components/auth/login/login';
 import { Register } from './components/auth/register/register';
 import { Layout } from './components/layout/layout';
 import { Dashboard } from './pages/dashboard/dashboard';
+import { authGuard } from './guards/auth-guard-guard';
+import { loginGuard } from './guards/login-guard-guard';
 
 export const routes: Routes = [
   {
@@ -13,7 +15,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: Login,
-    /* canActivate: [loginGuard], */
+    canActivate: [loginGuard],
   },
   {
     path: 'register',
@@ -22,7 +24,7 @@ export const routes: Routes = [
   {
     path: '',
     component: Layout,
-    /* canActivate: [authGuard], */
+    canActivate: [authGuard],
     children: [
       {
         path: 'dashboard',

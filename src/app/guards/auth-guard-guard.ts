@@ -1,14 +1,24 @@
+import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { map, catchError, of } from 'rxjs';
 
-export const authGuardGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const isLoggedIn = 0;
+  const http = inject(HttpClient);
 
-  if (isLoggedIn) {
-    return true;
-  } else {
-    router.navigateByUrl('login');
-    return false;
-  }
+  return http.get('/api/auth/authstatus', { withCredentials: true }).pipe(
+    map((response: any) => {
+      if (response?.isloggedin == true) {
+        return true;
+      } else {
+        router.navigateByUrl('login');
+        return false;
+      }
+    }),
+    catchError(() => {
+      router.navigateByUrl('login');
+      return of(false);
+    }),
+  );
 };
