@@ -18,4 +18,8 @@ export class Authservice {
   logout() {
     return this.http.post('/api/auth/logout', '');
   }
+
+  setup2fa() {
+    return this.http.post('/api/auth/2fa/setup', '');
+  }
 }
