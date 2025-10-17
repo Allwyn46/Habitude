@@ -1,1 +1,47 @@
-<p>verify2fa works!</p>
+<section class="w-full h-[95vh] flex justify-center items-center">
+  <z-card
+    class="w-full max-w-sm"
+    zTitle="Verify 2FA"
+    zDescription="Enter the 6 digit OTP to verify 2FA Authentication"
+  >
+    <form [formGroup]="verifyForm">
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <input
+            type="text"
+            formControlName="token"
+            placeholder="Enter OTP"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            required
+            appDigitsonly
+            maxlength="6"
+            minlength="6"
+          />
+          @if (verifyForm.controls['token'].touched) {
+            @if (verifyForm.controls['token'].errors?.['required']) {
+              <div>
+                <span class="text-[13px] text-red-500"> This Field is required </span>
+              </div>
+            }
+            @if (verifyForm.controls['token'].errors?.['minLength']) {
+              <div>
+                <span class="text-[13px] text-red-500"> Minimum 6 characters required </span>
+              </div>
+            }
+          }
+        </div>
+        <div class="space-y-2">
+          <button
+            z-button
+            zType="default"
+            [disabled]="verifyForm.invalid"
+            class="w-full"
+            (click)="handleVerification()"
+          >
+            Verify
+          </button>
+        </div>
+      </div>
+    </form>
+  </z-card>
+</section>

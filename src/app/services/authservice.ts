@@ -22,4 +22,12 @@ export class Authservice {
   setup2fa() {
     return this.http.post('/api/auth/2fa/setup', '');
   }
+
+  verify2fa(formData: any) {
+    return this.http.post('/api/auth/2fa/verify', formData);
+  }
+
+  status() {
+    return this.http.get('/api/auth/authStatus');
+  }
 }

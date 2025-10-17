@@ -32,7 +32,11 @@ export class Login {
       next: (response: any) => {
         this.habitservice.showSuccessToast('Success', response?.message);
         setTimeout(() => {
-          this.router.navigateByUrl('dashboard');
+          if (response?.ismfaactive == true) {
+            this.router.navigateByUrl('verify-2fa');
+          } else {
+            this.router.navigateByUrl('dashboard');
+          }
         }, 1000);
       },
       error: (error) => {

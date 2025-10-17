@@ -11,3 +11,7 @@ export interface LoginFormat {
   username: FormControl<string>;
   password: FormControl<string>;
 }
+
+export interface Verify2faFormat {
+  token: FormControl<string>;
+}
