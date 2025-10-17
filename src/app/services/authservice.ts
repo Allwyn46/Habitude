@@ -30,4 +30,8 @@ export class Authservice {
   status() {
     return this.http.get('/api/auth/authStatus');
   }
+
+  update(formData: any) {
+    return this.http.put('/api/auth/update', formData);
+  }
 }
