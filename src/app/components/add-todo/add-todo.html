@@ -3,7 +3,7 @@
     <label
       for="name"
       class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
-      >Name</label
+      >Title</label
     >
     <input
       z-input
@@ -16,12 +16,42 @@
     <label
       for="username"
       class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
-      >Username</label
+      >Description</label
+    >
+    <textarea
+      z-input
+      formControlName="username"
+      rows="20"
+      class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
+    ></textarea>
+  </div>
+
+  <div class="grid gap-3">
+    <label
+      for="name"
+      class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
+      >Date</label
     >
     <input
       z-input
-      formControlName="username"
+      type="date"
+      formControlName="name"
       class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
     />
+  </div>
+
+  <div class="grid gap-3">
+    <label
+      for="name"
+      class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
+      >Date</label
+    >
+    <select zPlaceholder="Selecione uma fruta">
+      <select-item zValue="apple">Apple</select-item>
+      <select-item zValue="banana">Banana</select-item>
+      <select-item zValue="blueberry">Blueberry</select-item>
+      <select-item zValue="grapes">Grapes</select-item>
+      <select-item zValue="pineapple" zDisabled>Pineapple</select-item>
+    </select>
   </div>
 </form>

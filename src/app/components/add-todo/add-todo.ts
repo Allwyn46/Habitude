@@ -40,8 +40,8 @@ export class AddTodoTrigger {
 
   openSheet() {
     this.sheetService.create({
-      zTitle: 'Edit profile',
-      zDescription: `Make changes to your profile here. Click save when you're done.`,
+      zTitle: 'Add Todo',
+      zDescription: `Fill out the below data and Click save when you're done.`,
       zContent: AddTodo,
       zData: {
         name: 'Matheus Ribeiro',

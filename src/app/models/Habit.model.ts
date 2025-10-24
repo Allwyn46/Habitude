@@ -21,3 +21,9 @@ export interface UpdateUserFormat {
   username: FormControl<string>;
   id: FormControl<string>;
 }
+
+export interface AddTodoFormat {
+  userid: FormControl<string>;
+  todo: FormControl<string>;
+  date: FormControl<string>;
+}
