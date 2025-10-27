@@ -20,7 +20,7 @@ export class AddTodo {
   private zData: iSheetData = inject(Z_MODAL_DATA);
 
   public form = new FormGroup({
-    name: new FormControl('Matheus Ribeiro'),
+    name: new FormControl(''),
     username: new FormControl('@ribeiromatheus.dev'),
   });
 

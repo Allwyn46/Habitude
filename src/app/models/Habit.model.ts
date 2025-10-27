@@ -24,6 +24,8 @@ export interface UpdateUserFormat {
 
 export interface AddTodoFormat {
   userid: FormControl<string>;
-  todo: FormControl<string>;
+  title: FormControl<string>;
+  description: FormControl<string>;
+  category: FormControl<string>;
   date: FormControl<string>;
 }
