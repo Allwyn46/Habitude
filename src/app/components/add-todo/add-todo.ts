@@ -1,14 +1,16 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ZardButtonComponent } from 'n/button/button.component';
 import { Z_MODAL_DATA, ZardSheetService } from 'n/sheet/sheet.service';
 import { ZardInputDirective } from 'n/input/input.directive';
 import { ZardSheetModule } from 'n/sheet/sheet.module';
-
-interface iSheetData {
-  name: string;
-  username: string;
-}
+import { AddTodoFormat } from 'src/app/models/Habit.model';
 
 @Component({
   selector: 'app-add-todo',
@@ -19,9 +21,12 @@ interface iSheetData {
 export class AddTodo {
   private zData: iSheetData = inject(Z_MODAL_DATA);
 
-  public form = new FormGroup({
-    name: new FormControl(''),
-    username: new FormControl('@ribeiromatheus.dev'),
+  public form = new FormGroup<AddTodoFormat>({
+    userid: new FormControl('', { nonNullable: true }),
+    title: new FormControl('', { nonNullable: true, validators: Validators.required }),
+    description: new FormControl('', { nonNullable: true, validators: Validators.required }),
+    category: new FormControl('', { nonNullable: true, validators: Validators.required }),
+    date: new FormControl('', { nonNullable: true, validators: Validators.required }),
   });
 
   constructor() {
@@ -43,10 +48,6 @@ export class AddTodoTrigger {
       zTitle: 'Add Todo',
       zDescription: `Fill out the below data and Click save when you're done.`,
       zContent: AddTodo,
-      zData: {
-        name: 'Matheus Ribeiro',
-        username: '@ribeiromatheus.dev',
-      } as iSheetData,
       zOkText: 'Save changes',
       zOnOk: (instance) => {
         console.log('Form submitted:', instance.form.value);
