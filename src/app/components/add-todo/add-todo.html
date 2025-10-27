@@ -46,12 +46,29 @@
       class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
       >Date</label
     >
-    <select zPlaceholder="Selecione uma fruta">
-      <select-item zValue="apple">Apple</select-item>
-      <select-item zValue="banana">Banana</select-item>
-      <select-item zValue="blueberry">Blueberry</select-item>
-      <select-item zValue="grapes">Grapes</select-item>
-      <select-item zValue="pineapple" zDisabled>Pineapple</select-item>
+  </div>
+
+  <div class="relative">
+    <select
+      class="appearance-none w-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-md px-4 py-2 text-sm text-neutral-800 dark:text-neutral-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-500 cursor-pointer transition-all"
+    >
+      <option selected disabled>Select Todo category</option>
+      <option value="apple">Apple</option>
+      <option value="banana">Banana</option>
+      <option value="blueberry">Blueberry</option>
+      <option value="grapes">Grapes</option>
+      <option value="pineapple" disabled>Pineapple</option>
     </select>
+
+    <!-- Custom dropdown icon -->
+    <svg
+      class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-500 pointer-events-none"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
   </div>
 </form>
