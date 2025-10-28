@@ -1,8 +1,14 @@
 import type { ClassValue } from 'clsx';
 
-import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 
-import { mergeClasses } from 'n/merge-classes';
+import { mergeClasses } from '../merge-classes';
 import { contentVariants } from './layout.variants';
 
 @Component({

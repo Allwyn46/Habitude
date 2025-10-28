@@ -1,8 +1,15 @@
 import type { ClassValue } from 'clsx';
 
-import { ChangeDetectionStrategy, Component, computed, contentChildren, input, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  contentChildren,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 
-import { mergeClasses } from 'n/merge-classes';
+import { mergeClasses } from '../merge-classes';
 import { layoutVariants, LayoutVariants } from './layout.variants';
 import { SidebarComponent } from './sidebar.component';
 

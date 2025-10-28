@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import type { ClassValue } from 'clsx';
 
@@ -12,7 +18,14 @@ import { ZARD_ICONS, ZardIcon } from './icons';
   imports: [LucideAngularModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  template: ` <lucide-angular [img]="icon()" [strokeWidth]="zStrokeWidth()" [absoluteStrokeWidth]="zAbsoluteStrokeWidth()" [class]="classes()" /> `,
+  template: `
+    <lucide-angular
+      [img]="icon()"
+      [strokeWidth]="zStrokeWidth()"
+      [absoluteStrokeWidth]="zAbsoluteStrokeWidth()"
+      [class]="classes()"
+    />
+  `,
   host: {},
 })
 export class ZardIconComponent {
@@ -22,7 +35,9 @@ export class ZardIconComponent {
   readonly zAbsoluteStrokeWidth = input<boolean>(false);
   readonly class = input<ClassValue>('');
 
-  protected readonly classes = computed(() => mergeClasses(iconVariants({ zSize: this.zSize() }), this.class()));
+  protected readonly classes = computed(() =>
+    mergeClasses(iconVariants({ zSize: this.zSize() }), this.class()),
+  );
 
   protected readonly icon = computed(() => {
     const type = this.zType();

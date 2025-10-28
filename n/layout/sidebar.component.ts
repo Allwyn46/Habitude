@@ -1,11 +1,26 @@
-import { ChangeDetectionStrategy, Component, computed, effect, input, output, signal, TemplateRef, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  input,
+  output,
+  signal,
+  TemplateRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import type { ClassValue } from 'clsx';
 
 import { ZardStringTemplateOutletDirective } from '../core/directives/string-template-outlet/string-template-outlet.directive';
-import { sidebarGroupLabelVariants, sidebarGroupVariants, sidebarTriggerVariants, sidebarVariants } from './layout.variants';
-import { mergeClasses, transform } from 'n/merge-classes';
+import {
+  sidebarGroupLabelVariants,
+  sidebarGroupVariants,
+  sidebarTriggerVariants,
+  sidebarVariants,
+} from './layout.variants';
+import { mergeClasses, transform } from '../merge-classes';
 import { ZardIconComponent } from '../icon/icon.component';
-import { ZardIcon } from 'n/icon/icons';
+import { ZardIcon } from '../icon/icons';
 
 @Component({
   selector: 'z-sidebar',
@@ -15,7 +30,11 @@ import { ZardIcon } from 'n/icon/icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-    <aside [class]="classes()" [style.width.px]="currentWidth()" [attr.data-collapsed]="zCollapsed()">
+    <aside
+      [class]="classes()"
+      [style.width.px]="currentWidth()"
+      [attr.data-collapsed]="zCollapsed()"
+    >
       <div class="flex-1 overflow-auto">
         <ng-content></ng-content>
       </div>
@@ -124,5 +143,7 @@ export class SidebarGroupComponent {
 export class SidebarGroupLabelComponent {
   readonly class = input<ClassValue>('');
 
-  protected readonly classes = computed(() => mergeClasses(sidebarGroupLabelVariants(), this.class()));
+  protected readonly classes = computed(() =>
+    mergeClasses(sidebarGroupLabelVariants(), this.class()),
+  );
 }
