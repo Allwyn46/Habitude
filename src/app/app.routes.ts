@@ -25,6 +25,14 @@ export const routes: Routes = [
     component: Register,
   },
   {
+    path: 'setup-2fa',
+    component: Setup2fa,
+  },
+  {
+    path: 'verify-2fa',
+    component: Verify2fa,
+  },
+  {
     path: '',
     component: Layout,
     canActivate: [authGuard],
@@ -36,14 +44,6 @@ export const routes: Routes = [
       {
         path: 'profile',
         component: Profile,
-      },
-      {
-        path: 'setup-2fa',
-        component: Setup2fa,
-      },
-      {
-        path: 'verify-2fa',
-        component: Verify2fa,
       },
     ],
   },

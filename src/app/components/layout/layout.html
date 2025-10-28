@@ -37,13 +37,13 @@
   </z-header>
 
   <z-layout>
-    <z-sidebar [zWidth]="200" class="!p-0">
+    <z-sidebar [zWidth]="200" [zCollapsible]="true" [zCollapsed]="sidebarCollapsed()" [zCollapsedWidth]="70" (zCollapsedChange)="onCollapsedChange($event)" class="!p-0">
       <nav class="flex flex-col h-full gap-2 p-4">
         <z-sidebar-group>
           <z-sidebar-group-label>Menu</z-sidebar-group-label>
           <button z-button zType="secondary" class="justify-start">
             <z-icon zType="house" class="mr-2" />
-            Dashboard
+            All Tasks
           </button>
           <button z-button zType="ghost" class="justify-start">
             <z-icon zType="layers" class="mr-2" />
@@ -59,7 +59,7 @@
 
     <z-layout>
       <z-content class="">
-        <div class="space-y-4 p-5">
+        <div class="space-y-2">
           <router-outlet />
         </div>
       </z-content>

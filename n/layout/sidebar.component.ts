@@ -35,10 +35,6 @@ import { ZardIcon } from '../icon/icons';
       [style.width.px]="currentWidth()"
       [attr.data-collapsed]="zCollapsed()"
     >
-      <div class="flex-1 overflow-auto">
-        <ng-content></ng-content>
-      </div>
-
       @if (zCollapsible() && !zTrigger()) {
         <div
           [class]="triggerClasses()"
@@ -53,6 +49,10 @@ import { ZardIcon } from '../icon/icons';
           <z-icon [zType]="chevronIcon()" />
         </div>
       }
+
+      <div class="flex-1 overflow-auto">
+        <ng-content></ng-content>
+      </div>
 
       @if (zCollapsible() && zTrigger()) {
         <ng-container *zStringTemplateOutlet="zTrigger()"></ng-container>

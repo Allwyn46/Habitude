@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { Navbar } from '../navbar/navbar';
 import {
@@ -16,6 +16,12 @@ import { FooterComponent } from 'n/layout/footer.component';
 import { Authservice } from 'src/app/services/authservice';
 import { Habitservice } from 'src/app/services/habitservice';
 import { CommonModule } from '@angular/common';
+
+interface MenuItem {
+  icon: string;
+  label: string;
+  submenu?: { label: string }[];
+}
 
 @Component({
   selector: 'app-layout',
@@ -87,5 +93,36 @@ export class Layout {
 
   onProfile() {
     this.router.navigateByUrl('profile');
+  }
+
+  sidebarCollapsed = signal(false);
+
+  mainMenuItems: MenuItem[] = [
+    { icon: 'house', label: 'Home' },
+    { icon: 'inbox', label: 'Inbox' },
+  ];
+
+  workspaceMenuItems: MenuItem[] = [
+    {
+      icon: 'folder',
+      label: 'Projects',
+      submenu: [{ label: 'Design System' }, { label: 'Mobile App' }, { label: 'Website' }],
+    },
+    { icon: 'calendar', label: 'Calendar' },
+    { icon: 'search', label: 'Search' },
+  ];
+
+  avatar = {
+    fallback: 'ZA',
+    url: '/images/avatar/imgs/avatar_image.jpg',
+    alt: 'ZadUI',
+  };
+
+  toggleSidebar() {
+    this.sidebarCollapsed.update((collapsed) => !collapsed);
+  }
+
+  onCollapsedChange(collapsed: boolean) {
+    this.sidebarCollapsed.set(collapsed);
   }
 }
