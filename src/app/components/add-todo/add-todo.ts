@@ -19,7 +19,7 @@ import { AddTodoFormat } from 'src/app/models/Habit.model';
   styleUrl: './add-todo.css',
 })
 export class AddTodo {
-  private zData: iSheetData = inject(Z_MODAL_DATA);
+  /*  private zData: iSheetData = inject(Z_MODAL_DATA); */
 
   public form = new FormGroup<AddTodoFormat>({
     userid: new FormControl('', { nonNullable: true }),
@@ -29,9 +29,9 @@ export class AddTodo {
     date: new FormControl('', { nonNullable: true, validators: Validators.required }),
   });
 
-  constructor() {
-    if (this.zData) this.form.patchValue(this.zData);
-  }
+  // constructor() {
+  //   if (this.zData) this.form.patchValue(this.zData);
+  // }
 }
 
 @Component({
