@@ -29,3 +29,7 @@ export interface AddTodoFormat {
   category: FormControl<string>;
   date: FormControl<string>;
 }
+
+export interface AddCategoryFormat {
+  category: FormControl<string>;
+}
