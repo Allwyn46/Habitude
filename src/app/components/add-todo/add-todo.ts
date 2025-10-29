@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -11,15 +11,26 @@ import { Z_MODAL_DATA, ZardSheetService } from 'n/sheet/sheet.service';
 import { ZardInputDirective } from 'n/input/input.directive';
 import { ZardSheetModule } from 'n/sheet/sheet.module';
 import { AddTodoFormat } from 'src/app/models/Habit.model';
+import { Habitservice } from 'src/app/services/habitservice';
+import { map, Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-todo',
-  imports: [FormsModule, ReactiveFormsModule, ZardInputDirective],
+  imports: [FormsModule, ReactiveFormsModule, ZardInputDirective, AsyncPipe],
   templateUrl: './add-todo.html',
   styleUrl: './add-todo.css',
 })
-export class AddTodo {
+export class AddTodo implements OnInit {
   /*  private zData: iSheetData = inject(Z_MODAL_DATA); */
+  habitservice = inject(Habitservice);
+  CategoryList$: Observable<any[]> = new Observable<any[]>();
+
+  ngOnInit(): void {
+    this.CategoryList$ = this.habitservice
+      .getallCategory()
+      .pipe(map((response: any) => response.data));
+  }
 
   public form = new FormGroup<AddTodoFormat>({
     userid: new FormControl('', { nonNullable: true }),
@@ -28,10 +39,6 @@ export class AddTodo {
     category: new FormControl('', { nonNullable: true, validators: Validators.required }),
     date: new FormControl('', { nonNullable: true, validators: Validators.required }),
   });
-
-  // constructor() {
-  //   if (this.zData) this.form.patchValue(this.zData);
-  // }
 }
 
 @Component({

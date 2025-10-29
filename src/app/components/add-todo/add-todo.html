@@ -57,11 +57,9 @@
       class="appearance-none w-full bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-md px-4 py-2 text-sm text-neutral-800 dark:text-neutral-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-neutral-500 cursor-pointer transition-all"
     >
       <option selected disabled>Select Todo category</option>
-      <option value="apple">Apple</option>
-      <option value="banana">Banana</option>
-      <option value="blueberry">Blueberry</option>
-      <option value="grapes">Grapes</option>
-      <option value="pineapple" disabled>Pineapple</option>
+      @for (item of CategoryList$ | async; track $index) {
+        <option value="{{ item.id }}">{{ item.todo_cate_name }}</option>
+      }
     </select>
 
     <!-- Custom dropdown icon -->
