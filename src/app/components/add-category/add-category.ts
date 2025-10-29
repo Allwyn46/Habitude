@@ -13,6 +13,7 @@ import { ZardDialogModule } from 'n/dialog/dialog.component';
 import { Z_MODAL_DATA, ZardDialogService } from 'n/dialog/dialog.service';
 import { AddCategoryFormat } from 'src/app/models/Habit.model';
 import { HttpClient } from '@angular/common/http';
+import { Habitservice } from 'src/app/services/habitservice';
 
 interface iDialogData {
   name: string;
@@ -41,6 +42,7 @@ export class AddCategory {
 })
 export class AddCategoryTrigger {
   private dialogService = inject(ZardDialogService);
+  habitService = inject(Habitservice);
 
   openDialog() {
     this.dialogService.create({
@@ -50,6 +52,17 @@ export class AddCategoryTrigger {
       zOkText: 'Save changes',
       zOnOk: (instance) => {
         const formData = instance.form.value;
+        this.habitService.addCategory(formData).subscribe({
+          next: (response: any) => {
+            if (response?.result == true) {
+              this.habitService.showSuccessToast('Success', 'Category added successfully');
+            }
+          },
+          error: (error: any) => {
+            this.habitService.showErrorToast('Error', 'Something went wrong');
+            console.log(error.message);
+          },
+        });
       },
       zWidth: '425px',
     });
