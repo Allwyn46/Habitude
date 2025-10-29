@@ -39,4 +39,20 @@ export class Habitservice {
   markComplete(id: any) {
     return this.http.post('/api/todo/mark-as-complete', id);
   }
+
+  addCategory(formdata: any) {
+    return this.http.post('/api/category/create', formdata);
+  }
+
+  getallCategory() {
+    return this.http.post('/api/category/getall', '');
+  }
+
+  editCategory(formdata: any) {
+    return this.http.post('/api/category/update', formdata);
+  }
+
+  deleteCategory(id: any) {
+    return this.http.post('/api/category/delete', id);
+  }
 }

@@ -12,6 +12,7 @@ import { ZardInputDirective } from 'n/input/input.directive';
 import { ZardDialogModule } from 'n/dialog/dialog.component';
 import { Z_MODAL_DATA, ZardDialogService } from 'n/dialog/dialog.service';
 import { AddCategoryFormat } from 'src/app/models/Habit.model';
+import { HttpClient } from '@angular/common/http';
 
 interface iDialogData {
   name: string;
