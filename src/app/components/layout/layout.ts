@@ -16,6 +16,7 @@ import { FooterComponent } from 'n/layout/footer.component';
 import { Authservice } from 'src/app/services/authservice';
 import { Habitservice } from 'src/app/services/habitservice';
 import { CommonModule } from '@angular/common';
+import { AddCategory, AddCategoryTrigger } from '../add-category/add-category';
 
 interface MenuItem {
   icon: string;
@@ -40,6 +41,8 @@ interface MenuItem {
     ZardIconComponent,
     RouterLink,
     CommonModule,
+    AddCategoryTrigger,
+    AddCategory,
   ],
   templateUrl: './layout.html',
   styleUrl: './layout.css',
