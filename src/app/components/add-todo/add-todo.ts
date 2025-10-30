@@ -26,6 +26,13 @@ export class AddTodo implements OnInit {
   habitservice = inject(Habitservice);
   CategoryList$: Observable<any[]> = new Observable<any[]>();
 
+  loggedinUser: any;
+
+  user = {
+    name: '',
+    id: 0,
+  };
+
   ngOnInit(): void {
     this.CategoryList$ = this.habitservice.getallCategory().pipe(
       map((response: any) => {
@@ -33,6 +40,21 @@ export class AddTodo implements OnInit {
         return Array.isArray(category) ? category : [category];
       }),
     );
+
+    if (this.loggedinUser) {
+      this.user = {
+        name: this.loggedinUser.employeeName,
+        id: this.loggedinUser.employeeId,
+      };
+      this.leaveForm.get('employeeId')?.setValue(this.user.id);
+    }
+  }
+
+  constructor() {
+    const userString = localStorage.getItem('loggedinUser');
+    if (userString) {
+      this.loggedinUser = JSON.parse(userString);
+    }
   }
 
   public form = new FormGroup<AddTodoFormat>({
@@ -52,6 +74,7 @@ export class AddTodo implements OnInit {
 })
 export class AddTodoTrigger {
   private sheetService = inject(ZardSheetService);
+  habitService = inject(Habitservice);
 
   openSheet() {
     this.sheetService.create({
@@ -60,7 +83,14 @@ export class AddTodoTrigger {
       zContent: AddTodo,
       zOkText: 'Save changes',
       zOnOk: (instance) => {
-        console.log('Form submitted:', instance.form.value);
+        const formdata = instance.form.value;
+        this.habitService.addtodo(formdata).subscribe({
+          next: (response: any) => {
+            if (response?.result == true) {
+              this.habitService.showSuccessToast('Success', 'Todo Added Successfully');
+            }
+          },
+        });
       },
     });
   }
