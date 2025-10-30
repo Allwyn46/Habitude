@@ -27,9 +27,12 @@ export class AddTodo implements OnInit {
   CategoryList$: Observable<any[]> = new Observable<any[]>();
 
   ngOnInit(): void {
-    this.CategoryList$ = this.habitservice
-      .getallCategory()
-      .pipe(map((response: any) => response.data));
+    this.CategoryList$ = this.habitservice.getallCategory().pipe(
+      map((response: any) => {
+        const category = response.Categories;
+        return Array.isArray(category) ? category : [category];
+      }),
+    );
   }
 
   public form = new FormGroup<AddTodoFormat>({
