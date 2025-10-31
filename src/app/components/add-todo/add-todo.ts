@@ -14,6 +14,7 @@ import { AddTodoFormat } from 'src/app/models/Habit.model';
 import { Habitservice } from 'src/app/services/habitservice';
 import { map, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { Authservice } from 'src/app/services/authservice';
 
 @Component({
   selector: 'app-add-todo',
@@ -24,6 +25,7 @@ import { AsyncPipe } from '@angular/common';
 export class AddTodo implements OnInit {
   /*  private zData: iSheetData = inject(Z_MODAL_DATA); */
   habitservice = inject(Habitservice);
+  authservice = inject(Authservice);
   CategoryList$: Observable<any[]> = new Observable<any[]>();
 
   loggedinUser: any;
@@ -33,6 +35,17 @@ export class AddTodo implements OnInit {
     id: '',
   };
 
+  constructor() {
+    this.authservice.status().subscribe({
+      next: (response: any) => {
+        this.form.get('userid')?.setValue(response.userid);
+      },
+      error: (error: any) => {
+        console.log('error', error);
+      },
+    });
+  }
+
   ngOnInit(): void {
     this.CategoryList$ = this.habitservice.getallCategory().pipe(
       map((response: any) => {
@@ -40,21 +53,6 @@ export class AddTodo implements OnInit {
         return Array.isArray(category) ? category : [category];
       }),
     );
-
-    if (this.loggedinUser) {
-      this.user = {
-        name: this.loggedinUser.employeeName,
-        id: this.loggedinUser.employeeId,
-      };
-      this.form.get('userid')?.setValue(this.user.id);
-    }
-  }
-
-  constructor() {
-    const userString = localStorage.getItem('loggedinUser');
-    if (userString) {
-      this.loggedinUser = JSON.parse(userString);
-    }
   }
 
   public form = new FormGroup<AddTodoFormat>({
