@@ -30,7 +30,7 @@ export class AddTodo implements OnInit {
 
   user = {
     name: '',
-    id: 0,
+    id: '',
   };
 
   ngOnInit(): void {
@@ -46,7 +46,7 @@ export class AddTodo implements OnInit {
         name: this.loggedinUser.employeeName,
         id: this.loggedinUser.employeeId,
       };
-      this.leaveForm.get('employeeId')?.setValue(this.user.id);
+      this.form.get('userid')?.setValue(this.user.id);
     }
   }
 
