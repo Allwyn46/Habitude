@@ -8,10 +8,15 @@
     </div>
   </div>
 
-  <div class="mt-10">
+  <div class="mt-10 flex justify-between items-center">
     @if (todos.length > 0) {
       @for (item of todos; track $index) {
-        <z-alert [zTitle]="item.todo_title" [zDescription]="item.todo_desc" zAppearance="soft" />
+        <z-alert
+          [zTitle]="item.todo_title"
+          [zDescription]="item.todo_desc"
+          zAppearance="soft"
+          class="max-w-[420px]"
+        />
       }
     } @else {
       <p class="text-sm text-muted-foreground text-center mt-4">No todos available</p>

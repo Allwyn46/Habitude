@@ -74,6 +74,10 @@ export class AddTodoTrigger {
   private sheetService = inject(ZardSheetService);
   habitService = inject(Habitservice);
 
+  locationReload() {
+    window.location.reload();
+  }
+
   openSheet() {
     this.sheetService.create({
       zTitle: 'Add Todo',
@@ -86,6 +90,7 @@ export class AddTodoTrigger {
           next: (response: any) => {
             if (response?.result == true) {
               this.habitService.showSuccessToast('Success', 'Todo Added Successfully');
+              this.locationReload();
             }
           },
         });
