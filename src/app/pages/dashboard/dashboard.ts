@@ -3,12 +3,13 @@ import { Component, inject } from '@angular/core';
 import { ZardAlertComponent } from 'n/alert/alert.component';
 import { ZardButtonComponent } from 'n/button/button.component';
 import { AddTodoTrigger } from 'src/app/components/add-todo/add-todo';
+import { TodoCard } from 'src/app/components/todo-card/todo-card';
 import { Authservice } from 'src/app/services/authservice';
 import { Habitservice } from 'src/app/services/habitservice';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [ZardButtonComponent, AddTodoTrigger, CommonModule, ZardAlertComponent],
+  imports: [ZardButtonComponent, AddTodoTrigger, CommonModule, ZardAlertComponent, TodoCard],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
