@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ZardButtonComponent } from 'n/button/button.component';
 import { ZardSheetModule } from 'n/sheet/sheet.module';
@@ -61,7 +61,7 @@ export class EditTodo implements OnInit {
   standalone: true,
   imports: [ZardButtonComponent, ZardSheetModule],
   template: `
-    <button z-button zType="ghost" (click)="openSheet()" class="absolute top-1 right-28 z-50">
+    <button z-button zType="ghost" (click)="openSheet(todoid)" class="absolute top-1 right-28 z-50">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -85,18 +85,23 @@ export class EditTodo implements OnInit {
 export class EditTodoTrigger {
   private sheetService = inject(ZardSheetService);
   habitService = inject(Habitservice);
+  @Input() todoid!: string;
+  editTodoInstance!: EditTodo;
 
   locationReload() {
     window.location.reload();
   }
 
-  openSheet() {
+  openSheet(id: any) {
+    this.editTodoInstance.form.get('userid')?.setValue(id);
+
     this.sheetService.create({
-      zTitle: 'Add Todo',
-      zDescription: `Fill out the below data and Click save when you're done.`,
+      zTitle: 'Edit Todo',
+      zDescription: `Edit the below data and Click save when you're done.`,
       zContent: EditTodo,
       zOkText: 'Save changes',
       zOnOk: (instance) => {
+        this.editTodoInstance.form.get('userid')?.setValue();
         const formdata = instance.form.value;
         this.habitService.addtodo(formdata).subscribe({
           next: (response: any) => {
