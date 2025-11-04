@@ -14,7 +14,9 @@
     @for (item of todos; track $index) {
       <app-todo-card
         [title]="item.todo_title"
-        [description]="item.todo_desc">
+        [description]="item.todo_desc"
+        [todoid]="item.id"
+        >
       </app-todo-card>
     }
   } @else {
