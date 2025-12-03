@@ -37,42 +37,6 @@
   </z-header>
 
   <z-layout>
-    <z-sidebar [zWidth]="200" [zCollapsible]="true" [zCollapsed]="sidebarCollapsed()" [zCollapsedWidth]="70" (zCollapsedChange)="onCollapsedChange($event)" class="!p-0">
-      <nav class="flex flex-col h-full gap-2 p-4">
-        <z-sidebar-group>
-          <z-sidebar-group-label>Menu</z-sidebar-group-label>
-          <button z-button zType="secondary" class="justify-start">
-            <z-icon zType="house" class="mr-2" />
-            All Tasks
-          </button>
-          <button z-button zType="ghost" class="justify-start">
-            <z-icon zType="layers" class="mr-2" />
-            Projects
-          </button>
-          <button z-button zType="ghost" class="justify-start">
-            <z-icon zType="users" class="mr-2" />
-            Team
-          </button>
-          <app-add-category-trigger></app-add-category-trigger>
-<!--           <button z-button zType="secondary" class="justify-center"> -->
-<!---->
-<!-- <svg -->
-<!--   xmlns="http://www.w3.org/2000/svg" -->
-<!--   class="mr-2 h-4 w-4" -->
-<!--   fill="none" -->
-<!--   viewBox="0 0 24 24" -->
-<!--   stroke="currentColor" -->
-<!--   stroke-width="2" -->
-<!-- > -->
-<!--   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /> -->
-<!-- </svg> -->
-<!---->
-<!--               Add Category -->
-<!--           </button> -->
-        </z-sidebar-group>
-      </nav>
-    </z-sidebar>
-
     <z-layout>
       <z-content class="">
         <div class="space-y-2">

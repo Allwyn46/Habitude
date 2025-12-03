@@ -100,18 +100,18 @@ export class EditTodoTrigger {
       zDescription: `Edit the below data and Click save when you're done.`,
       zContent: EditTodo,
       zOkText: 'Save changes',
-      zOnOk: (instance) => {
-        this.editTodoInstance.form.get('userid')?.setValue();
-        const formdata = instance.form.value;
-        this.habitService.addtodo(formdata).subscribe({
-          next: (response: any) => {
-            if (response?.result == true) {
-              this.habitService.showSuccessToast('Success', 'Todo Added Successfully');
-              this.locationReload();
-            }
-          },
-        });
-      },
+      // zOnOk: (instance) => {
+      //   this.editTodoInstance.form.get('userid')?.setValue();
+      //   const formdata = instance.form.value;
+      //   this.habitService.addtodo(formdata).subscribe({
+      //     next: (response: any) => {
+      //       if (response?.result == true) {
+      //         this.habitService.showSuccessToast('Success', 'Todo Added Successfully');
+      //         this.locationReload();
+      //       }
+      //     },
+      //   });
+      // },
     });
   }
 }
